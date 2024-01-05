@@ -1,4 +1,5 @@
-import { FlightTrackerType } from "./airLabsFlight.type";
+import { AirLabsFlightTrackerType } from "./airLabsFlight.type";
+
 export interface IAirLabsFlightResponse<T> extends IAirLabsFlight {
   response: T;
 }
@@ -28,7 +29,7 @@ export interface IAirLabsFlightRequest {
     limits_by_month: number;
     limits_total: number;
   };
-  params: FlightTrackerType;
+  params: AirLabsFlightTrackerType;
   version: number;
   method: string;
   client: {

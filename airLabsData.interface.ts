@@ -1,4 +1,5 @@
 import { EAirLabsLang } from "./airLabs.enum";
+import { IAirLabsAirport, IAirLabsCity } from "./airLabsAirport.interface";
 
 export interface IAirLabsSuggestResponse {
   countries: IAirLabsCountry[];
@@ -16,30 +17,6 @@ export interface IAirLabsCountry {
   name: string;
   continent: string;
   currency: string;
-}
-
-export interface IAirLabsCity {
-  country_code: string;
-  lng: number;
-  timezone: string;
-  name: string;
-  city_code: string;
-  slug: string;
-  lat: number;
-  popularity: number;
-}
-
-export interface IAirLabsAirport {
-  country_code: string;
-  iata_code: string;
-  lng: number;
-  city: string;
-  timezone: string;
-  name: string;
-  city_code: string;
-  slug: string;
-  lat: number;
-  popularity: number;
 }
 
 export interface IAirLabsCitiesByAirport {

@@ -1,5 +1,6 @@
 import { AirLabsServiceConfig } from "./airLabs.type";
-import { AirLabsAirportService } from "./airLabsAirPort.service";
+import { AirLabsAirportService } from "./airLabsAirport.service";
+import { AirLabsDataService } from "./airLabsData.service";
 import { AirLabsFlightService } from "./airLabsFlight.service";
 
 export class TequilaService {
@@ -16,5 +17,9 @@ export class TequilaService {
 
   get airport() {
     return new AirLabsAirportService(this.airLabsServiceConfig);
+  }
+
+  get data() {
+    return new AirLabsDataService(this.airLabsServiceConfig);
   }
 }
