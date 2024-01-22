@@ -189,14 +189,14 @@ export class AirLabsDataService {
    *
    *
    * @param params
-   * @returns {Array<AirLabsCountriesDataType>}
+   * @returns {IAirLabsResponse<Array<IAirLabsRouteData>>}
    */
   async getCountries(
     params: AirLabsCountriesDataType
-  ): Promise<IAirLabsResponse<Array<AirLabsCountriesDataType>>> {
+  ): Promise<IAirLabsResponse<Array<IAirLabsRouteData>>> {
     return (
       await this.#_axiosInstance.get<
-        IAirLabsResponse<Array<AirLabsCountriesDataType>>
+        IAirLabsResponse<Array<IAirLabsRouteData>>
       >("api/v9/countries", {
         params: Object.assign(params, {
           api_key: this.#_apiKey,
