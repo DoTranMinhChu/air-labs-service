@@ -1,11 +1,11 @@
-import { AirLabsServiceConfig } from "./airLabs.type";
+import { AirLabsServiceConfigType } from "./airLabs.type";
 import { AirLabsAirportService } from "./airLabsAirport.service";
 import { AirLabsDataService } from "./airLabsData.service";
 import { AirLabsFlightService } from "./airLabsFlight.service";
 
-export class TequilaService {
-  airLabsServiceConfig: AirLabsServiceConfig;
-  constructor(airLabsServiceConfig: AirLabsServiceConfig) {
+export class AirLabsService {
+  airLabsServiceConfig: AirLabsServiceConfigType;
+  constructor(airLabsServiceConfig: AirLabsServiceConfigType) {
     if (!airLabsServiceConfig.baseUrl)
       airLabsServiceConfig.baseUrl = "https://airlabs.co";
     this.airLabsServiceConfig = airLabsServiceConfig;

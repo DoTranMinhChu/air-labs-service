@@ -1,4 +1,4 @@
-export type AirLabsServiceConfig = {
+export type AirLabsServiceConfigType = {
   apiKey: string;
   authToken?: string;
   baseUrl?: string;
