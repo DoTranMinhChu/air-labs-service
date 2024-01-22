@@ -1,10 +1,9 @@
 import { AxiosInstance } from "axios";
-import { AirLabsServiceConfigType } from "./airLabs.type";
+import { AirLabsServiceConfigType, IAirLabsResponse } from "./airLabs.type";
 import { axiosInstance } from "./axiosBase";
 import {
   IAirLabsAirportData,
   IAirLabsCityData,
-  IAirLabsCountryData,
   IAirLabsFleetData,
   IAirLabsFlightData,
   IAirLabsRouteData,
@@ -40,9 +39,9 @@ export class AirLabsDataService {
    */
   async suggest(
     params: AirLabsSuggestDataType
-  ): Promise<IAirLabsSuggestResponse> {
+  ): Promise<IAirLabsResponse<IAirLabsSuggestResponse>> {
     return (
-      await this.#_axiosInstance.get<IAirLabsSuggestResponse>(
+      await this.#_axiosInstance.get<IAirLabsResponse<IAirLabsSuggestResponse>>(
         "api/v9/suggest",
         {
           params: Object.assign(params, {
@@ -65,16 +64,15 @@ export class AirLabsDataService {
    */
   async getAirlines(
     params: AirLabsFlightsDataType
-  ): Promise<Array<IAirLabsFlightData>> {
+  ): Promise<IAirLabsResponse<Array<IAirLabsFlightData>>> {
     return (
-      await this.#_axiosInstance.get<Array<IAirLabsFlightData>>(
-        "api/v9/airlines",
-        {
-          params: Object.assign(params, {
-            api_key: this.#_apiKey,
-          }),
-        }
-      )
+      await this.#_axiosInstance.get<
+        IAirLabsResponse<Array<IAirLabsFlightData>>
+      >("api/v9/airlines", {
+        params: Object.assign(params, {
+          api_key: this.#_apiKey,
+        }),
+      })
     )?.data;
   }
 
@@ -90,16 +88,15 @@ export class AirLabsDataService {
    */
   async getAirports(
     params: AirLabsAirportsDataType
-  ): Promise<Array<IAirLabsAirportData>> {
+  ): Promise<IAirLabsResponse<Array<IAirLabsAirportData>>> {
     return (
-      await this.#_axiosInstance.get<Array<IAirLabsAirportData>>(
-        "api/v9/airports",
-        {
-          params: Object.assign(params, {
-            api_key: this.#_apiKey,
-          }),
-        }
-      )
+      await this.#_axiosInstance.get<
+        IAirLabsResponse<Array<IAirLabsAirportData>>
+      >("api/v9/airports", {
+        params: Object.assign(params, {
+          api_key: this.#_apiKey,
+        }),
+      })
     )?.data;
   }
 
@@ -118,13 +115,16 @@ export class AirLabsDataService {
    */
   async getCities(
     params: AirLabsCitiesDataType
-  ): Promise<Array<IAirLabsCityData>> {
+  ): Promise<IAirLabsResponse<Array<IAirLabsCityData>>> {
     return (
-      await this.#_axiosInstance.get<Array<IAirLabsCityData>>("api/v9/cities", {
-        params: Object.assign(params, {
-          api_key: this.#_apiKey,
-        }),
-      })
+      await this.#_axiosInstance.get<IAirLabsResponse<Array<IAirLabsCityData>>>(
+        "api/v9/cities",
+        {
+          params: Object.assign(params, {
+            api_key: this.#_apiKey,
+          }),
+        }
+      )
     )?.data;
   }
 
@@ -141,16 +141,15 @@ export class AirLabsDataService {
    */
   async getFleets(
     params: AirLabsFleetsDataType
-  ): Promise<Array<IAirLabsFleetData>> {
+  ): Promise<IAirLabsResponse<Array<IAirLabsFleetData>>> {
     return (
-      await this.#_axiosInstance.get<Array<IAirLabsFleetData>>(
-        "api/v9/fleets",
-        {
-          params: Object.assign(params, {
-            api_key: this.#_apiKey,
-          }),
-        }
-      )
+      await this.#_axiosInstance.get<
+        IAirLabsResponse<Array<IAirLabsFleetData>>
+      >("api/v9/fleets", {
+        params: Object.assign(params, {
+          api_key: this.#_apiKey,
+        }),
+      })
     )?.data;
   }
 
@@ -168,16 +167,15 @@ export class AirLabsDataService {
    */
   async getRoutes(
     params: AirLabsRoutesDataType
-  ): Promise<Array<IAirLabsRouteData>> {
+  ): Promise<IAirLabsResponse<Array<IAirLabsRouteData>>> {
     return (
-      await this.#_axiosInstance.get<Array<IAirLabsRouteData>>(
-        "api/v9/routes",
-        {
-          params: Object.assign(params, {
-            api_key: this.#_apiKey,
-          }),
-        }
-      )
+      await this.#_axiosInstance.get<
+        IAirLabsResponse<Array<IAirLabsRouteData>>
+      >("api/v9/routes", {
+        params: Object.assign(params, {
+          api_key: this.#_apiKey,
+        }),
+      })
     )?.data;
   }
 
@@ -195,16 +193,15 @@ export class AirLabsDataService {
    */
   async getCountries(
     params: AirLabsRoutesDataType
-  ): Promise<Array<AirLabsCountriesDataType>> {
+  ): Promise<IAirLabsResponse<Array<AirLabsCountriesDataType>>> {
     return (
-      await this.#_axiosInstance.get<Array<AirLabsCountriesDataType>>(
-        "api/v9/countries",
-        {
-          params: Object.assign(params, {
-            api_key: this.#_apiKey,
-          }),
-        }
-      )
+      await this.#_axiosInstance.get<
+        IAirLabsResponse<Array<AirLabsCountriesDataType>>
+      >("api/v9/countries", {
+        params: Object.assign(params, {
+          api_key: this.#_apiKey,
+        }),
+      })
     )?.data;
   }
 }

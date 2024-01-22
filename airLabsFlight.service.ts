@@ -1,11 +1,10 @@
 import { AxiosInstance } from "axios";
 import { axiosInstance } from "./axiosBase";
-import { AirLabsServiceConfigType } from "./airLabs.type";
+import { AirLabsServiceConfigType, IAirLabsResponse } from "./airLabs.type";
 import {
   IAirLabsCreateListenerResponse,
   IAirLabsFlightDelayResponse,
   IAirLabsFlightInformationResponse,
-  IAirLabsFlightResponse,
   IAirLabsFlightScheduleResponse,
   IAirLabsFlightTrackerResponse,
   IAirLabsWebhookResponse,
@@ -45,17 +44,17 @@ export class AirLabsFlightService {
    * Just take a look at this Flight Radar API https://airlabs.co/example/map.
    *
    * @param params
-   * @returns {IAirLabsFlightResponse<Array<IAirLabsFlightTrackerResponse>> | Array<Array<any>>}
+   * @returns {IAirLabsResponse<Array<IAirLabsFlightTrackerResponse>> | Array<Array<any>>}
    */
   async getRealTimeFlightTracker(
     params: AirLabsFlightTrackerType
   ): Promise<
-    | IAirLabsFlightResponse<Array<IAirLabsFlightTrackerResponse>>
+    | IAirLabsResponse<Array<IAirLabsFlightTrackerResponse>>
     | Array<Array<any>>
   > {
     return (
       await this.#_axiosInstance.get<
-        | IAirLabsFlightResponse<Array<IAirLabsFlightTrackerResponse>>
+        | IAirLabsResponse<Array<IAirLabsFlightTrackerResponse>>
         | Array<Array<any>>
       >("api/v9/flights", {
         params: Object.assign(params, {
@@ -80,14 +79,14 @@ export class AirLabsFlightService {
    * Just take a look at this Flight Radar API https://airlabs.co/example/schedules
    *
    * @param params
-   * @returns {IAirLabsFlightResponse<Array<IAirLabsFlightScheduleResponse>>}
+   * @returns {IAirLabsResponse<Array<IAirLabsFlightScheduleResponse>>}
    */
   async getFlightSchedules(
     params: AirLabsFlightScheduleType
-  ): Promise<IAirLabsFlightResponse<Array<IAirLabsFlightScheduleResponse>>> {
+  ): Promise<IAirLabsResponse<Array<IAirLabsFlightScheduleResponse>>> {
     return (
       await this.#_axiosInstance.get<
-        IAirLabsFlightResponse<Array<IAirLabsFlightScheduleResponse>>
+        IAirLabsResponse<Array<IAirLabsFlightScheduleResponse>>
       >("api/v9/schedules", {
         params: Object.assign(params, {
           api_key: this.#_apiKey,
@@ -105,14 +104,14 @@ export class AirLabsFlightService {
    * This API was designed primarily for services such as airport transfers or insurance and flight delay compensation services.
    *
    * @param params
-   * @returns {IAirLabsFlightResponse<Array<IAirLabsFlightDelayResponse>>}
+   * @returns {IAirLabsResponse<Array<IAirLabsFlightDelayResponse>>}
    */
   async getFlightDelays(
     params: AirLabsFlightDelayType
-  ): Promise<IAirLabsFlightResponse<Array<IAirLabsFlightDelayResponse>>> {
+  ): Promise<IAirLabsResponse<Array<IAirLabsFlightDelayResponse>>> {
     return (
       await this.#_axiosInstance.get<
-        IAirLabsFlightResponse<Array<IAirLabsFlightDelayResponse>>
+        IAirLabsResponse<Array<IAirLabsFlightDelayResponse>>
       >("api/v9/delays", {
         params: Object.assign(params, {
           api_key: this.#_apiKey,
@@ -135,14 +134,14 @@ export class AirLabsFlightService {
    * https://airlabs.co/example/flight
    *
    * @param params
-   * @returns {IAirLabsFlightResponse<IAirLabsCreateListenerResponse>}
+   * @returns {IAirLabsResponse<IAirLabsCreateListenerResponse>}
    */
   async registerListener(
     params: AirLabsCreateListenerType
-  ): Promise<IAirLabsFlightResponse<IAirLabsCreateListenerResponse>> {
+  ): Promise<IAirLabsResponse<IAirLabsCreateListenerResponse>> {
     return (
       await this.#_axiosInstance.get<
-        IAirLabsFlightResponse<IAirLabsCreateListenerResponse>
+        IAirLabsResponse<IAirLabsCreateListenerResponse>
       >("api/v9/listen", {
         params: Object.assign(params, {
           api_key: this.#_apiKey,
@@ -165,14 +164,14 @@ export class AirLabsFlightService {
    * https://airlabs.co/example/flight
    *
    * @param params
-   * @returns {IAirLabsFlightResponse<{unlistened:true}>}
+   * @returns {IAirLabsResponse<{unlistened:true}>}
    */
   async unRegisterListener(
     params: AirLabsUnListenerType
-  ): Promise<IAirLabsFlightResponse<{ unlistened: true }>> {
+  ): Promise<IAirLabsResponse<{ unlistened: true }>> {
     return (
       await this.#_axiosInstance.get<
-        IAirLabsFlightResponse<{ unlistened: true }>
+        IAirLabsResponse<{ unlistened: true }>
       >("api/v9/unlisten", {
         params: Object.assign(params, {
           api_key: this.#_apiKey,
@@ -195,14 +194,14 @@ export class AirLabsFlightService {
    * https://airlabs.co/example/flight
    *
    * @param params
-   * @returns {IAirLabsFlightResponse<{unlistened:true}>}
+   * @returns {IAirLabsResponse<{unlistened:true}>}
    */
   async getAllListeners(): Promise<
-    IAirLabsFlightResponse<{ unlistened: true }>
+    IAirLabsResponse<{ unlistened: true }>
   > {
     return (
       await this.#_axiosInstance.get<
-        IAirLabsFlightResponse<{ unlistened: true }>
+        IAirLabsResponse<{ unlistened: true }>
       >("api/v9/listeners", {
         params: {
           api_key: this.#_apiKey,
@@ -217,14 +216,14 @@ export class AirLabsFlightService {
    * https://airlabs.co/example/flight
    *
    * @param params
-   * @returns {IAirLabsFlightResponse<Array<IAirLabsWebhookResponse>>}
+   * @returns {IAirLabsResponse<Array<IAirLabsWebhookResponse>>}
    */
   async getHistoryWebhooks(
     days?: number
-  ): Promise<IAirLabsFlightResponse<Array<IAirLabsWebhookResponse>>> {
+  ): Promise<IAirLabsResponse<Array<IAirLabsWebhookResponse>>> {
     return (
       await this.#_axiosInstance.get<
-        IAirLabsFlightResponse<Array<IAirLabsWebhookResponse>>
+        IAirLabsResponse<Array<IAirLabsWebhookResponse>>
       >("api/v9/webhooks", {
         params: {
           api_key: this.#_apiKey,
@@ -244,14 +243,14 @@ export class AirLabsFlightService {
    * https://airlabs.co/example/flight
    *
    * @param params
-   * @returns {IAirLabsFlightResponse<Array<IAirLabsFlightInformationResponse>>}
+   * @returns {IAirLabsResponse<Array<IAirLabsFlightInformationResponse>>}
    */
   async getInformationFlight(
     params: AirLabsFlightInformationType
-  ): Promise<IAirLabsFlightResponse<Array<IAirLabsFlightInformationResponse>>> {
+  ): Promise<IAirLabsResponse<Array<IAirLabsFlightInformationResponse>>> {
     return (
       await this.#_axiosInstance.get<
-        IAirLabsFlightResponse<Array<IAirLabsFlightInformationResponse>>
+        IAirLabsResponse<Array<IAirLabsFlightInformationResponse>>
       >("api/v9/flight", {
         params: Object.assign(params, {
           api_key: this.#_apiKey,

@@ -1,5 +1,5 @@
 import { AxiosInstance } from "axios";
-import { AirLabsServiceConfigType } from "./airLabs.type";
+import { AirLabsServiceConfigType, IAirLabsResponse } from "./airLabs.type";
 import { axiosInstance } from "./axiosBase";
 import { IAirLabsNearByAirport } from "./airLabsAirport.interface";
 import { AirLabsNearbyAirportType } from "./airLabsAirport.type";
@@ -16,7 +16,7 @@ export class AirLabsAirportService {
 
   /**
    * You can use the Airports API in your services to show users the nearest departure airport or all available airports within a given radius.
-   * 
+   *
    * Some of our clients, thanks to the NearBy API, are developing smart assistant bots that do more than their users expect.
    *
    *
@@ -25,9 +25,11 @@ export class AirLabsAirportService {
    */
   async getNearbyAirport(
     params: AirLabsNearbyAirportType
-  ): Promise<IAirLabsNearByAirport> {
+  ): Promise<IAirLabsResponse<Array<IAirLabsNearByAirport>>> {
     return (
-      await this.#_axiosInstance.get<IAirLabsNearByAirport>("api/v9/nearby", {
+      await this.#_axiosInstance.get<
+        IAirLabsResponse<Array<IAirLabsNearByAirport>>
+      >("api/v9/nearby", {
         params: Object.assign(params, {
           api_key: this.#_apiKey,
         }),
