@@ -1,6 +1,6 @@
 import { AxiosInstance } from "axios";
 import { axiosInstance } from "./axiosBase";
-import { AirLabsServiceConfig } from "./airLabs.type";
+import { AirLabsServiceConfigType } from "./airLabs.type";
 import {
   IAirLabsCreateListenerResponse,
   IAirLabsFlightDelayResponse,
@@ -23,7 +23,7 @@ export class AirLabsFlightService {
   #_apiKey: string;
   #_axiosInstance: AxiosInstance;
   #_baseURL: string;
-  constructor(airLabsServiceConfig: AirLabsServiceConfig) {
+  constructor(airLabsServiceConfig: AirLabsServiceConfigType) {
     this.#_apiKey = airLabsServiceConfig.apiKey;
     this.#_baseURL = airLabsServiceConfig.baseUrl;
     this.#_axiosInstance = axiosInstance(this.#_baseURL);
