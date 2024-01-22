@@ -192,7 +192,7 @@ export class AirLabsDataService {
    * @returns {Array<AirLabsCountriesDataType>}
    */
   async getCountries(
-    params: AirLabsRoutesDataType
+    params: AirLabsCountriesDataType
   ): Promise<IAirLabsResponse<Array<AirLabsCountriesDataType>>> {
     return (
       await this.#_axiosInstance.get<
