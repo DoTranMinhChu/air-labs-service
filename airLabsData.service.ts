@@ -4,6 +4,7 @@ import { axiosInstance } from "./axiosBase";
 import {
   IAirLabsAirportData,
   IAirLabsCityData,
+  IAirLabsCountryData,
   IAirLabsFleetData,
   IAirLabsFlightData,
   IAirLabsRouteData,
@@ -189,14 +190,14 @@ export class AirLabsDataService {
    *
    *
    * @param params
-   * @returns {IAirLabsResponse<Array<IAirLabsRouteData>>}
+   * @returns {IAirLabsResponse<Array<IAirLabsCountryData>>}
    */
   async getCountries(
     params: AirLabsCountriesDataType
-  ): Promise<IAirLabsResponse<Array<IAirLabsRouteData>>> {
+  ): Promise<IAirLabsResponse<Array<IAirLabsCountryData>>> {
     return (
       await this.#_axiosInstance.get<
-        IAirLabsResponse<Array<IAirLabsRouteData>>
+        IAirLabsResponse<Array<IAirLabsCountryData>>
       >("api/v9/countries", {
         params: Object.assign(params, {
           api_key: this.#_apiKey,
