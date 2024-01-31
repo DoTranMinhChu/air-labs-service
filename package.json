@@ -1,6 +1,6 @@
 {
   "name": "air-labs-service",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "scripts": {
     "rmdir": "node -e \"var fs = require('fs');process.argv.slice(1).map((fpath)=>{ try {fs.rmdirSync(fpath,{recursive: true})} catch(e){console.warn('Error folder:', fpath, e)}});process.exit(0);\"",
@@ -20,7 +20,7 @@
   "files": [
     "/dist"
   ],
-  "module": "./dist/esm/index.js",
+  "module": "./dist/esm/index.js",  
   "author": "dotranminhchu",
   "license": "ISC",
   "private": false,

@@ -130,6 +130,7 @@ export interface IAirLabsCityData {
   lat: number;
   lng: number;
   alt: number;
+  type: string;
   timezone: string;
   country_code: string;
   population: number;
