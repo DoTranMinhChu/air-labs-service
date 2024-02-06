@@ -6,7 +6,7 @@ import {
   IAirLabsCityData,
   IAirLabsCountryData,
   IAirLabsFleetData,
-  IAirLabsFlightData,
+  IAirLabsAirlineData,
   IAirLabsRouteData,
   IAirLabsSuggestResponse,
 } from "./airLabsData.interface";
@@ -61,14 +61,14 @@ export class AirLabsDataService {
    *
    *
    * @param params
-   * @returns {Array<IAirLabsFlightData>}
+   * @returns {Array<IAirLabsAirlineData>}
    */
   async getAirlines(
     params: AirLabsFlightsDataType
-  ): Promise<IAirLabsResponse<Array<IAirLabsFlightData>>> {
+  ): Promise<IAirLabsResponse<Array<IAirLabsAirlineData>>> {
     return (
       await this.#_axiosInstance.get<
-        IAirLabsResponse<Array<IAirLabsFlightData>>
+        IAirLabsResponse<Array<IAirLabsAirlineData>>
       >("api/v9/airlines", {
         params: Object.assign(params, {
           api_key: this.#_apiKey,

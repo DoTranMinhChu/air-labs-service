@@ -69,7 +69,7 @@ export interface IAirLabsAirportsByCountry {
   popularity: number;
 }
 
-export interface IAirLabsFlightData {
+export interface IAirLabsAirlineData {
   name: string;
   iata_code: string;
   iata_prefix: number;
