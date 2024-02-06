@@ -77,12 +77,19 @@ export class AirLabsDataService {
     )?.data;
   }
 
+  /**
+   * Example https://airlabs.co/img/airline/m/AA.png
+   *
+   * @param iata_code
+   * @param option
+   * @returns
+   */
   getAirlineLogo(
     iata_code: string,
     option: { size: "m" | "s" } = { size: "m" }
   ) {
     return new URL(
-      `image/${option.size}/${iata_code}.png`,
+      `img/airline/${option.size}/${iata_code}.png`,
       this.#_baseURL
     ).toString();
   }
