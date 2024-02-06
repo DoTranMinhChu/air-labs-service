@@ -77,6 +77,16 @@ export class AirLabsDataService {
     )?.data;
   }
 
+  getAirlineLogo(
+    iata_code: string,
+    option: { size: "m" | "s" } = { size: "m" }
+  ) {
+    return new URL(
+      `image/${option.size}/${iata_code}.png`,
+      this.#_baseURL
+    ).toString();
+  }
+
   /**
    * Airlines API is the most essential data for any travel startup and companies related to the airline industry.
    *
