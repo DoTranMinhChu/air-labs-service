@@ -8,10 +8,14 @@ export interface IAirLabsResponse<T> extends IAirLabsResponseBase {
 }
 
 export interface IAirLabsResponseBase {
+  error?: IAirLabsErrorBase;
   request: IAirLabsRequest;
   terms: string;
 }
-
+export interface IAirLabsErrorBase {
+  message: string;
+  code: string;
+}
 export interface IAirLabsRequest {
   lang: string;
   currency: string;
